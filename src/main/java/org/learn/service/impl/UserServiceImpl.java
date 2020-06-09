@@ -16,8 +16,8 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public void addUser(User user) {
-        userRepo.saveAndFlush(user);
+    public Optional<User> addUser(User user) {
+        return Optional.of(userRepo.saveAndFlush(user));
     }
 
     @Override

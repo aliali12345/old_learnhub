@@ -1,6 +1,7 @@
 package org.learn.controller;
 
 import org.learn.enums.Message;
+import org.learn.pojo.Result;
 import org.learn.service.UserService;
 import org.learn.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,27 +21,24 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping("/register")
-    public String register(@RequestBody User user){
-        userService.addUser(user);
-        return "redirect:login";
+    public Result register(@RequestBody User user, HttpServletResponse response) throws IOException {
+        Optional<User> optional = userService.addUser(user);
+        if (optional.isPresent()){
+            response.sendRedirect("/login");
+        }
+        return new Result(Message.LOGIN_FAIL);
     }
 
     @RequestMapping("login")
     @ResponseBody
-    public Message login(@RequestParam(value = "username") String username, @RequestParam(value = "password") String password, HttpServletRequest request, HttpServletResponse response) {
+    public Result login(@RequestParam(value = "username") String username, @RequestParam(value = "password") String password, HttpServletRequest request, HttpServletResponse response) throws IOException {
         Optional<User> user = userService.findUser(username, password);
         if (user.isPresent()){
             HttpSession httpSession = request.getSession();
             httpSession.setAttribute("userInfo", user.get());
             httpSession.setMaxInactiveInterval(60);
-            try {
-                response.sendRedirect("/learnhub");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }else {
-            return Message.LOGIN_FAIL;
+            response.sendRedirect("/learnhub");
         }
-        return null;
+        return new Result(Message.LOGIN_FAIL);
     }
 }

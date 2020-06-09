@@ -12,21 +12,16 @@ public enum Message {
      * 登录失败
      */
     LOGIN_FAIL(-1,"账号或密码有误"),
+    FAIL(500, "操作失败"),
+    FILE_NOT_FOUND(-2, "文件找不到"),
     ;
 
     private int code;
     private String msg;
-    private Object data;
 
     Message(int code, String msg) {
         this.code = code;
         this.msg = msg;
-    }
-
-    Message(int code, String msg, Object data) {
-        this.code = code;
-        this.msg = msg;
-        this.data = data;
     }
 
     public int getCode() {
@@ -41,15 +36,8 @@ public enum Message {
         return msg;
     }
 
-    public void setMsg(String msg) {
+    public Message setMsg(String msg) {
         this.msg = msg;
-    }
-
-    public Object getData() {
-        return data;
-    }
-
-    public void setData(Object data) {
-        this.data = data;
+        return this;
     }
 }
