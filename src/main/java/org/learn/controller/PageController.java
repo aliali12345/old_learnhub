@@ -43,4 +43,9 @@ public class PageController {
     public String learnhub_page(@PathVariable(value = "pageName")String pageName){
         return "/learnhub/"+pageName;
     }
+
+    @RequestMapping("/profile/{pageName}")
+    public String profile_page(@PathVariable(value = "pageName")String pageName){
+        return "/profile/"+pageName;
+    }
 }
