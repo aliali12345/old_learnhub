@@ -40,6 +40,11 @@ public class PageController {
         return "/profile/" + pageName;
     }
 
+    @RequestMapping("/article/{pageName}")
+    public String article_page(@PathVariable(value = "pageName")String pageName) {
+        return "/article/" + pageName;
+    }
+
     @RequestMapping("/favicon.ico")
     public void ico (HttpServletResponse response) throws IOException {
         URL url = PageController.class.getResource("/static/favicon.ico");
