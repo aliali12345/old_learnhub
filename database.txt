@@ -1,0 +1,36 @@
+user 用户表
+	id 用户编号
+	username 用户名
+	password 密码
+	avatar 头像
+	email 邮箱
+	identity 身份
+	organization 组织(单位或学校)
+	site 个人主页
+	introduction 个人简介
+
+
+learnhub 学习空间表
+	id 学习空间编号
+	name 名称
+	avatar 头像
+	introduction 简介
+	admin 创建者id
+	star 点赞量
+	follow 关注量
+	permissions 访问权限
+
+learn_user 学习空间成员表
+	id 空间成员id
+	user_id 用户id
+	join_time 加入时间
+
+learn_resource 资源列表
+	id 资源id
+	resouce_name 资源名
+	user_name 作者
+	introduction 描述
+	content 资源内容
+	tags 标签
+	type 资源类型(资源区、讨论区、贡献区)
+	update_time 更新时间
