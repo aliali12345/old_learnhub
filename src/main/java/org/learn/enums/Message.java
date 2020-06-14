@@ -14,6 +14,7 @@ public enum Message {
     LOGIN_FAIL(-1,"账号或密码有误"),
     FAIL(500, "操作失败"),
     FILE_NOT_FOUND(-2, "文件找不到"),
+    PAGE_NOT_FOUND(404, "页面找不到")
     ;
 
     private int code;
@@ -39,5 +40,13 @@ public enum Message {
     public Message setMsg(String msg) {
         this.msg = msg;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "code=" + code +
+                ", msg='" + msg + '\'' +
+                '}';
     }
 }

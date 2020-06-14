@@ -5,7 +5,10 @@ spring:
     static-locations: classpath:/resources/, classpath:/static/
   thymeleaf:
     cache: false
-
+  main:
+    allow-bean-definition-overriding: true
+  session:
+    timeout: 10
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -24,6 +27,9 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+# 需要登录才能进行操作的请求uri
+FilterURI: "/profile/"
 
 
 
