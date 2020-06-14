@@ -199,12 +199,11 @@
     }
     //上传头像到服务器
     function upimg() {
-        console.log(344)
         var pic = $('#upload')[0].files[0];
         var file = new FormData();
-        file.append('image', pic);
+        file.append('file', pic);
         $.ajax({
-            url: "/uploadImg",
+            url: "/user/upload",
             type: "post",
             data: file,
             cache: false,
@@ -212,7 +211,7 @@
             processData: false,
             success: function(data) {
                 console.log(data);
-                var res = data;
+                var res = data.data;
                 $("#resimg").append("<img src='/" + res + "'>")
             }
         });

@@ -36,4 +36,18 @@ public class User {
 
     @Column(name = "introduction",columnDefinition = "varchar(255) comment '简介'")
     private String introduction;
+
+    @Override
+    public String toString() {
+        return "{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", email='" + email + '\'' +
+                ", identity=" + identity +
+                ", organization='" + organization + '\'' +
+                ", site='" + site + '\'' +
+                ", introduction='" + introduction + '\'' +
+                '}';
+    }
 }

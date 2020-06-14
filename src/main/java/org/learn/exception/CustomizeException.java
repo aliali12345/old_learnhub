@@ -1,6 +1,6 @@
 package org.learn.exception;
 
-import org.learn.enums.Message;
+import org.learn.enums.MessageEnum;
 
 /**
  * 自定义异常处理
@@ -15,7 +15,7 @@ public class CustomizeException extends RuntimeException {
         super(message);
     }
 
-    public CustomizeException(Message message) {
-        super(message.toString());
+    public CustomizeException(MessageEnum messageEnum) {
+        super(messageEnum.toString());
     }
 }

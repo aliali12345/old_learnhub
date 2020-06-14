@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Arrays;
+
 
 @WebFilter(urlPatterns="/*")
 @Order(1)
@@ -29,7 +31,8 @@ public class SessionFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest)servletRequest;
         HttpSession httpSession = request.getSession();
         // 需要登录的请求 没登陆直接跳转到登录页面
-        if (request.getRequestURI().contains(filterURI) && httpSession.getAttribute(ConstEnum.USER_INFO.name()) == null){
+        Object attribute = httpSession.getAttribute(ConstEnum.USER_INFO.getValue());
+        if (needLogin(request) && attribute == null){
             response.sendRedirect("/login");
         }
         filterChain.doFilter(servletRequest,servletResponse);
@@ -38,5 +41,10 @@ public class SessionFilter implements Filter {
     @Override
     public void destroy() {
         System.out.println("filter destroy");
+    }
+
+    private boolean needLogin(HttpServletRequest request){
+        String[] uris = filterURI.split("\\|");
+        return Arrays.stream(uris).anyMatch(s -> request.getRequestURI().contains(s));
     }
 }

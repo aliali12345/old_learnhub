@@ -3,7 +3,7 @@ package org.learn.enums;
 /**
  * 返回前端信息枚举
  */
-public enum Message {
+public enum MessageEnum {
     /**
      * 成功 无返回数据
      */
@@ -14,13 +14,14 @@ public enum Message {
     LOGIN_FAIL(-1,"账号或密码有误"),
     FAIL(500, "操作失败"),
     FILE_NOT_FOUND(-2, "文件找不到"),
-    PAGE_NOT_FOUND(404, "页面找不到")
+    PAGE_NOT_FOUND(404, "页面找不到"),
+    FILE_UPLOAD_FAIL(-3, "上传文件失败")
     ;
 
     private int code;
     private String msg;
 
-    Message(int code, String msg) {
+    MessageEnum(int code, String msg) {
         this.code = code;
         this.msg = msg;
     }
@@ -37,7 +38,7 @@ public enum Message {
         return msg;
     }
 
-    public Message setMsg(String msg) {
+    public MessageEnum setMsg(String msg) {
         this.msg = msg;
         return this;
     }

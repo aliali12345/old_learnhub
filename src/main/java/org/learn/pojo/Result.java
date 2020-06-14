@@ -1,7 +1,7 @@
 package org.learn.pojo;
 
 import lombok.Data;
-import org.learn.enums.Message;
+import org.learn.enums.MessageEnum;
 
 @Data
 public class Result {
@@ -9,7 +9,7 @@ public class Result {
     private String msg;
     private Object data;
 
-    public Result(Message msg) {
+    public Result(MessageEnum msg) {
         this(msg.getCode(), msg.getMsg());
     }
 
@@ -18,9 +18,17 @@ public class Result {
         this.msg = msg;
     }
 
-    public Result(int code, String msg, Object data) {
-        this.code = code;
-        this.msg = msg;
+    public Result(MessageEnum msg, Object data) {
+        this(msg.getCode(), msg.getMsg());
         this.data = data;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "code=" + code +
+                ", msg='" + msg + '\'' +
+                ", data=" + data +
+                '}';
     }
 }

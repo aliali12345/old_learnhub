@@ -201,7 +201,7 @@ Other Changes:
 	* Fixed: After removing a dictionary, the words are not underlined and considered as incorrect.
 	* Fixed: The Slovenian (`sl_SL`) language does not work.
 	* Fixed: Quotes with code `U+2019` (Right single quotation mark) are considered separators.
-	* Fixed: Wrong error message formatting when the service ID is invalid.
+	* Fixed: Wrong error messageEnum formatting when the service ID is invalid.
 	* Fixed: Absent languages in the Languages tab when using SCAYT with the [Shared Spaces](https://ckeditor.com/cke4/addon/sharedspace) plugin.
 
 ## CKEditor 4.11.3
@@ -435,7 +435,7 @@ Fixed Issues:
 * [#1426](https://github.com/ckeditor/ckeditor4/issues/1426): [IE8-9] Fixed: Missing [Balloon Toolbar](https://ckeditor.com/cke4/addon/balloontoolbar) background in the [Kama](https://ckeditor.com/cke4/addon/kama) skin. Thanks to [Christian Elmer](https://github.com/keinkurt)!
 * [#1470](https://github.com/ckeditor/ckeditor4/issues/1470): Fixed: [Balloon Toolbar](https://ckeditor.com/cke4/addon/balloontoolbar) is not visible after drag and drop of a widget it is attached to.
 * [#1048](https://github.com/ckeditor/ckeditor4/issues/1048): Fixed: [Balloon Panel](https://ckeditor.com/cke4/addon/balloonpanel) is not positioned properly when a margin is added to its non-static parent.
-* [#889](https://github.com/ckeditor/ckeditor4/issues/889): Fixed: Unclear error message for width and height fields in the [Image](https://ckeditor.com/cke4/addon/image) and [Enhanced Image](https://ckeditor.com/cke4/addon/image2) plugins.
+* [#889](https://github.com/ckeditor/ckeditor4/issues/889): Fixed: Unclear error messageEnum for width and height fields in the [Image](https://ckeditor.com/cke4/addon/image) and [Enhanced Image](https://ckeditor.com/cke4/addon/image2) plugins.
 * [#859](https://github.com/ckeditor/ckeditor4/issues/859): Fixed: Cannot edit a link after a double-click on the text in the link.
 * [#1013](https://github.com/ckeditor/ckeditor4/issues/1013): Fixed: [Paste from Word](https://ckeditor.com/cke4/addon/pastefromword) does not work correctly with the [`config.forcePasteAsPlainText`](https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_config.html#cfg-forcePasteAsPlainText) option.
 * [#1356](https://github.com/ckeditor/ckeditor4/issues/1356): Fixed: [Border parse function](https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_tools_style_parse.html#method-border) does not allow spaces in the color value.
@@ -1632,7 +1632,7 @@ Fixed Issues:
 
 Fixed Issues:
 
-* [#9314](https://dev.ckeditor.com/ticket/9314): Fixed: Incorrect error message on closing a dialog window without saving changs.
+* [#9314](https://dev.ckeditor.com/ticket/9314): Fixed: Incorrect error messageEnum on closing a dialog window without saving changs.
 * [#10308](https://dev.ckeditor.com/ticket/10308): [IE10] Fixed: Unspecified error when deleting a row.
 * [#10945](https://dev.ckeditor.com/ticket/10945): [Chrome] Fixed: Clicking with a mouse inside the editor does not show the caret.
 * [#10912](https://dev.ckeditor.com/ticket/10912): Prevent default action when content of a non-editable link is clicked.

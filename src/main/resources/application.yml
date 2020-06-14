@@ -28,8 +28,13 @@ spring:
       ddl-auto: update
     show-sql: true
 
+  #允许上传的最大文件大小
+  servlet:
+    multipart:
+      max-file-size: 2MB
+
 # 需要登录才能进行操作的请求uri
-FilterURI: "/profile/"
+FilterURI: "/profile/|/upload"
 
 
 

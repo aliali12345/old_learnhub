@@ -24,12 +24,12 @@ public class Learnhub {
     @Column(name = "admin", columnDefinition = "int comment '管理员'")
     private int admin;
 
-    @Column(name = "star", columnDefinition = "int commit '点赞量'")
+    @Column(name = "star", columnDefinition = "int comment '点赞量'")
     private int star;
 
-    @Column(name = "follow", columnDefinition = "int commit '关注量'")
+    @Column(name = "follow", columnDefinition = "int comment '关注量'")
     private int follow;
 
-    @Column(name = "permissions", columnDefinition = "int commit '访问权限'")
+    @Column(name = "permissions", columnDefinition = "int comment '访问权限'")
     private int permisions;
 }
