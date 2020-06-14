@@ -31,6 +31,16 @@ learn_resource 资源列表
 	user_name 作者
 	introduction 描述
 	content 资源内容
+	file 文件
 	tags 标签
 	type 资源类型(资源区、讨论区、贡献区)
 	update_time 更新时间
+
+learn_comment
+	id 评论编号
+	resource_id 资源id
+	user_id 评论者id
+	comment 评论内容
+	update_time 更新时间
+
+
