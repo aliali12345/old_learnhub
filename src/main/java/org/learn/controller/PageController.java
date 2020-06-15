@@ -1,17 +1,13 @@
 package org.learn.controller;
 
-import org.learn.enums.MessageEnum;
-import org.learn.exception.CustomizeException;
+import org.learn.utils.FileUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.net.URL;
 
 @Controller
 public class PageController {
@@ -48,19 +44,6 @@ public class PageController {
 
     @RequestMapping(value = "/favicon.ico",method = RequestMethod.GET)
     public void ico (HttpServletResponse response) throws IOException {
-        URL url = PageController.class.getResource("/static/favicon.ico");
-        if (url != null) {
-            FileInputStream fileInputStream = new FileInputStream(url.getFile());
-            byte[] b = new byte[fileInputStream.available()];
-            int readSize = fileInputStream.read(b);
-            if (readSize > 0) {
-                ServletOutputStream outputStream = response.getOutputStream();
-                outputStream.write(b);
-                outputStream.flush();
-                outputStream.close();
-            }
-        }else {
-            throw new CustomizeException(MessageEnum.FILE_NOT_FOUND.getMsg());
-        }
+        FileUtil.outPutFile(response,"/static/favicon.ico");
     }
 }

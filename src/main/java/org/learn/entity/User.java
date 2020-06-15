@@ -26,7 +26,7 @@ public class User {
     private String email;
 
     @Column(name = "identity", columnDefinition = "tinyint comment '身份： 1 老师 2 学生 3 其他'")
-    private int identity;
+    private Integer identity;
 
     @Column(name = "organization",  columnDefinition = "varchar(50) comment '学校或单位'")
     private String organization;

@@ -15,7 +15,8 @@ public enum MessageEnum {
     FAIL(500, "操作失败"),
     FILE_NOT_FOUND(-2, "文件找不到"),
     PAGE_NOT_FOUND(404, "页面找不到"),
-    FILE_UPLOAD_FAIL(-3, "上传文件失败")
+    FILE_UPLOAD_FAIL(-3, "上传文件失败"),
+    DIR_CREATE_FAIL(-4, "文件夹创建失败")
     ;
 
     private int code;

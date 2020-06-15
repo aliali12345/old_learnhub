@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -46,9 +47,11 @@ public class UserController {
 
     @RequestMapping(value = "/upload",method = RequestMethod.POST)
     @ResponseBody
-    public Result photo(@RequestParam("file")MultipartFile multipartFile, HttpServletRequest request){
+    public Result photo( HttpServletRequest request){
+        MultipartHttpServletRequest multipart = (MultipartHttpServletRequest) request;
+        MultipartFile file = multipart.getFile("file");
         User user = (User)request.getSession().getAttribute(ConstEnum.USER_INFO.getValue());
-        String filePath = FileUtil.uploadFile(multipartFile, user.getEmail());
+        String filePath = FileUtil.uploadFile(file, user.getEmail());
         user.setAvatar(filePath);
         userService.updateUser(user);
         return new Result(MessageEnum.SUCCESS,filePath);
