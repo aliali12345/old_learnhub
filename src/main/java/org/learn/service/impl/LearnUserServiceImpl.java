@@ -3,7 +3,6 @@ package org.learn.service.impl;
 import org.learn.entity.LearnUser;
 import org.learn.repo.LearnUserRepo;
 import org.learn.service.LearnUserService;
-
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.Optional;
@@ -19,5 +18,9 @@ public class LearnUserServiceImpl implements LearnUserService {
     @Override
     public List<LearnUser> findLearnUser() {
         return learnUserRepo.findAll();
+    }
+
+    public void add(LearnUser learnUser) {
+        learnUserRepo.saveAndFlush(learnUser);
     }
 }

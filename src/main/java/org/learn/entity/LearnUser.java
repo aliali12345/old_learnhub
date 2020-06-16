@@ -1,6 +1,7 @@
 package org.learn.entity;
 
 import lombok.Data;
+import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
 
@@ -12,6 +13,7 @@ public class LearnUser {
     @Id
     private Long id;
 
+    @NonNull
     @Column(name = "user_id", columnDefinition = "int comment '用户id'")
     private String user_id;
 
