@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Data
 @Table(name="learn_comment")
 @Entity
-public class Learn_comment {
+public class LearnComment {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private Long id;

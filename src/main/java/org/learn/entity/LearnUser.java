@@ -1,17 +1,19 @@
 package org.learn.entity;
 
 import lombok.Data;
+import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
 
 @Data
 @Table(name = "learn_user")
 @Entity
-public class Learn_user {
+public class LearnUser {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private Long id;
 
+    @NonNull
     @Column(name = "user_id", columnDefinition = "int comment '用户id'")
     private String user_id;
 

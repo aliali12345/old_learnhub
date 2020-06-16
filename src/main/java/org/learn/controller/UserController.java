@@ -56,4 +56,6 @@ public class UserController {
         userService.updateUser(user);
         return new Result(MessageEnum.SUCCESS,filePath);
     }
+
+
 }

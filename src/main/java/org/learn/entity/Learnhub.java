@@ -22,14 +22,14 @@ public class Learnhub {
     private String introduction;
 
     @Column(name = "admin", columnDefinition = "int comment '管理员'")
-    private int admin;
+    private int admin = 0;
 
     @Column(name = "star", columnDefinition = "int comment '点赞量'")
-    private int star;
+    private int star = 0;
 
     @Column(name = "follow", columnDefinition = "int comment '关注量'")
-    private int follow;
+    private int follow = 0;
 
     @Column(name = "permissions", columnDefinition = "int comment '访问权限'")
-    private int permisions;
+    private int permissions = 0;
 }
