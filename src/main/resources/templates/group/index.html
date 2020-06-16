@@ -2,104 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>学习群组-概览</title>
+
+    <title>知识会 - 为开源共享而生</title>
 
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <script src="../../js/jquery.min.js"></script>
     <script src="../../js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../../font-awesome/css/font-awesome.css">
 
+
 </head>
-<style type="text/css">
-    body {
-        font-size: 16px;
-    }
-
-    .title {
-        color: #2e2e2e;
-        font-weight: 600;
-    }
-
-    .el-tag.el-tag--info {
-        background-color: #f4f4f5;
-        border-color: #e9e9eb;
-        color: #909399;
-    }
-
-    .el-tag--mini {
-        height: 20px;
-        padding: 0 5px;
-        line-height: 19px;
-    }
-
-    .el-tag {
-        display: inline-block;
-        font-size: 12px;
-        border: 1px solid #d9ecff;
-        border-radius: 4px;
-        box-sizing: border-box;
-        white-space: nowrap;
-    }
-
-    .el-input__inner {
-        -webkit-appearance: none;
-        background-color: #fff;
-        background-image: none;
-        border-radius: 4px;
-        border: 1px solid #dcdfe6;
-        box-sizing: border-box;
-        color: #606266;
-        display: inline-block;
-        font-size: inherit;
-        outline: 0;
-        padding: 0 15px;
-        transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
-    }
-
-    .card, .card .card-header {
-        display: flex;
-    }
-
-    .m-t-24 {
-        margin-top: 1.5rem;
-    }
-
-    .card {
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-        flex-direction: column;
-        min-width: 0;
-        word-wrap: break-word;
-        background-color: #fff;
-        background-clip: border-box;
-        border: 1px solid #dfdfdf;
-        border-radius: .25rem;
-        overflow: hidden;
-    }
-
-    .card .card-header {
-        -webkit-box-align: center;
-        align-items: center;
-        padding: .375rem 1rem;
-        background-color: #fafafa;
-        border-bottom: 1px solid #dfdfdf;
-        display: flex;
-    }
-
-    .card .card-header .controls-container .el-input {
-        width: unset;
-    }
-
-    .el-table__body-wrapper {
-        overflow: hidden;
-        position: relative;
-    }
-
-    .el-table__body-wrapper, .el-table__footer-wrapper, .el-table__header-wrapper {
-
-        width: 100%;
-    }
-</style>
 <body>
 <nav class="navbar navbar-default" role="navigation">
     <div class="navbar-header">
@@ -114,14 +26,14 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-            <li>
-                <a href="../forum">社区</a>
-            </li>
             <li class="active">
-                <a href="../learnhub">学习空间</a>
+                <a href="/forum">社区</a>
             </li>
             <li>
-                <a href="../group">我的群组</a>
+                <a href="/learnhub">学习空间</a>
+            </li>
+            <li>
+                <a href="/group">我的群组</a>
             </li>
         </ul>
         <form class="navbar-form navbar-left" role="search">
@@ -132,16 +44,16 @@
         </form>
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <a href="#">登录/注册</a>
+                <a href="/login">登录/注册</a>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">用户名<strong class="caret"></strong></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" th:inline="text" th:if="${session.userInfo} ne null">[[${session.userInfo.username}]]<strong class="caret"></strong></a>
                 <ul class="dropdown-menu">
                     <li>
                         <a href="#">我的动态</a>
                     </li>
                     <li>
-                        <a href="profile">个人中心</a>
+                        <a href="#">个人中心</a>
                     </li>
                     <li>
                         <a href="#">问卷系统</a>
@@ -156,56 +68,56 @@
         </ul>
     </div>
 </nav>
-<div class="container-fluid">
-    <div class="row-fluid">
-        <div class="col-md-2">
-            <ul class="nav nav-list well">
-                <li>
-                    <p><a class="active" href="#"><big>小组名称</big></a></p></li>
-                <li>
-                <li class="active" style="background-color: #E5E5E5;"><p><a href="#"><big>概览</big></a></p></li>
+<div>
+    <div class="row">
+        <div class="col-lg-3">
+            <ul class="nav nav-list">
+                <li class="nav-header">
+                    <div style="margin-left:20px">
+                        <img style="width: 42px" src="http://file.learnerhub.net/Fq3lWeqyWarwbGrihRlIoVsu9d-W" class="img-circle">
+                        <h5>计算机科学与技术</h5>
+                    </div>
+
+                </li>
+                <li class="active">
+                    <a href="index">概览</a>
                 </li>
                 <li>
-                    <p><big><a href="#">活跃</a></big></p>
-                </li>
-                <li>
-                    <p><big><a href="#">设置</a></big></p>
+                    <a href="setting">设置</a>
                 </li>
             </ul>
-
         </div>
-        <div class="col-md-10">
-            <div style="margin: 0 200px; width: 60%;">
-                <ul class="breadcrumb" style="border-bottom: 2px solid gray; ">
-                    <li><a href="#">学习群组</a> <span class="divider">&gt;</span></li>
-                    <li><a href="#">小组名称</a> <span class="divider">&gt;</span></li>
-                    <li class="active">概况</li>
-                </ul>
-                <div>
-                    <p><strong><big>软件工程</big></strong></p>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">
-                            软件工程
-                        </h3>
-                    </div>
-                    <div class="panel-body">
+        <div class="col-lg-8">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#">学习群组</a>
+                </li>
+                <li>
+                    <a href="#">计算机科学与技术</a>
+                </li>
+            </ul>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                计算机科学与技术的成员
+                            </h3>
+                        </div>
                         <div class="panel-group" id="accordion">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
                                         <a data-toggle="collapse" data-parent="#accordion"
                                            href="#collapseOne">
-                                            <img alt="100x100" src="../../img/1.jpg" class="img-circle"/>
-                                            唐静婷
+                                            阿狸
                                         </a>
                                     </h4>
                                 </div>
                                 <div id="collapseOne" class="panel-collapse collapse in">
                                     <div class="panel-body">
-                                        <p>姓名：静婷</p>
-                                        <p>学号： 38</p>
+                                        <div>姓名：阿狸</div>
+                                        <div>学号：24</div>
                                     </div>
                                 </div>
                             </div>
@@ -214,15 +126,14 @@
                                     <h4 class="panel-title">
                                         <a data-toggle="collapse" data-parent="#accordion"
                                            href="#collapseTwo">
-                                            <img alt="100x100" src="../../img/1.jpg" class="img-circle"/>
-                                            贺欣
+                                            阿狸
                                         </a>
                                     </h4>
                                 </div>
                                 <div id="collapseTwo" class="panel-collapse collapse">
                                     <div class="panel-body">
-                                        <p>姓名：静婷</p>
-                                        <p>学号： 2017911103</p>
+                                        <div>姓名：阿狸</div>
+                                        <div>学号：24</div>
                                     </div>
                                 </div>
                             </div>
@@ -231,15 +142,14 @@
                                     <h4 class="panel-title">
                                         <a data-toggle="collapse" data-parent="#accordion"
                                            href="#collapseThree">
-                                            <img alt="100x100" src="../../img/1.jpg" class="img-circle"/>
-                                            龚高丽
+                                            阿狸
                                         </a>
                                     </h4>
                                 </div>
                                 <div id="collapseThree" class="panel-collapse collapse">
                                     <div class="panel-body">
-                                        <p>姓名：静婷</p>
-                                        <p>学号： 2017911103</p>
+                                        <div>姓名：阿狸</div>
+                                        <div>学号：24</div>
                                     </div>
                                 </div>
                             </div>
@@ -252,3 +162,4 @@
 </div>
 </body>
 </html>
+

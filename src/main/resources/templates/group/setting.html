@@ -6,7 +6,7 @@
     <title>知识会 - 为开源共享而生</title>
 
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
-    <script src="../../jquery.min.js"></script>
+    <script src="../../js/jquery.min.js"></script>
     <script src="../../js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../../font-awesome/css/font-awesome.css">
 
@@ -70,64 +70,82 @@
 </nav>
 <div>
     <div class="row">
-        <div class="col-lg-2">
+        <div class="col-lg-3">
             <ul class="nav nav-list">
                 <li class="nav-header">
                     <div style="margin-left:20px">
-                        <img style="width: 42px" src="http://file.learnerhub.net/Fq3lWeqyWarwbGrihRlIoVsu9d-W">
-                        <h4>个人中心</h4>
+                        <img style="width: 42px" src="http://file.learnerhub.net/Fq3lWeqyWarwbGrihRlIoVsu9d-W" class="img-circle">
+                        <h5>计算机科学与技术</h5>
                     </div>
 
                 </li>
                 <li class="active">
-                    <a href="index">用户资料</a>
+                    <a href="index">概览</a>
                 </li>
                 <li>
-                    <a href="integral">我的积分</a>
-                </li>
-                <li>
-                    <a href="password">密码</a>
+                    <a href="setting">设置</a>
                 </li>
             </ul>
         </div>
         <div class="col-lg-8">
             <ul class="breadcrumb">
                 <li>
-                    <a href="#">用户名</a>
+                    <a href="#">学习群组</a>
                 </li>
                 <li>
-                    <a href="#">个人中心</a>
+                    <a href="#">计算机科学与技术</a>
                 </li>
             </ul>
-            <hr>
-            <div class="container-fluid">
-                <div class="row-fluid">
-                    <div class="col-lg-3">
-                        <h2>密码</h2>
-                        <p>密码更新成功后，您将被重定向到登录页面，您可以使用新密码重新登录。</p>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel-heading">
+                        <h2 class="panel-title">
+                            <div data-toggle="collapse" data-parent="#accordion"
+                               href="#collapseOne">
+                                常规设置
+                                <br /><small>修改群组名、群组描述和其它常规设置。</small>
+                            </div>
+                        </h2>
                     </div>
-                    <div class="col-lg-4">
-                        <div class="container">
-                            <form>
-                                <div class="form-group col-lg-7">
-                                    <label for="old_password">旧密码:</label>
-                                    <input type="old_password" class="form-control" id="old_password" placeholder="旧密码">
-                                </div>
-                                <div class="form-group col-lg-7">
-                                    <label for="password">新密码:</label>
-                                    <input type="password" class="form-control" id="password" placeholder="新密码">
-                                </div>
-                                <div class="form-group col-lg-7">
-                                    <label for="repassword">确认密码:</label>
-                                    <input type="repassword" class="form-control" id="repassword" placeholder="确认密码">
-                                </div>
-                                <div class="form-check col-lg-7">
-                                    <button type="submit" class="btn btn-primary">修改密码</button>
-                                </div>
-
-                            </form>
+                    <div id="collapseOne" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <div>姓名：阿狸</div>
+                            <div>学号：24</div>
                         </div>
                     </div>
+                    <hr />
+                    <div class="panel-heading">
+                        <h2 class="panel-title">
+                            <div data-toggle="collapse" data-parent="#accordion"
+                               href="#collapseTwo">
+                                成员邀请
+                                <br /><small>用户可以通过邀请码或邀请链接加入群组。</small>
+                            </div>
+                        </h2>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div>姓名：阿狸</div>
+                            <div>学号：24</div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="panel-heading">
+                        <h2 class="panel-title">
+                            <div data-toggle="collapse" data-parent="#accordion"
+                               href="#collapseThree">
+                                高级设置
+                                <br /><small>用户可以通过邀请码或邀请链接加入群组。</small>
+                            </div>
+                        </h2>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div>姓名：阿狸</div>
+                            <div>学号：24</div>
+                        </div>
+                    </div>
+                    <hr />
                 </div>
             </div>
         </div>
