@@ -14,9 +14,13 @@ public class LearnUser {
     private Long id;
 
     @NonNull
-    @Column(name = "user_id", columnDefinition = "int comment '用户id'")
-    private String user_id;
+    @Column(name = "learn_id", columnDefinition = "bigint comment '学习空间id'")
+    private Long learnId;
+
+    @NonNull
+    @Column(name = "user_id", columnDefinition = "bigint comment '用户id'")
+    private String userId;
 
     @Column(name = "join_time", columnDefinition = "datetime comment '加入时间'")
-    private String join_time;
+    private String joinTime;
 }

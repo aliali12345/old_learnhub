@@ -21,7 +21,7 @@ public class Learnhub {
     @Column(name = "introduction",columnDefinition = "varchar(255) comment '简介'")
     private String introduction;
 
-    @Column(name = "admin", columnDefinition = "int comment '管理员'")
+    @Column(name = "admin", columnDefinition = "tinyint comment '管理员'")
     private int admin = 0;
 
     @Column(name = "star", columnDefinition = "int comment '点赞量'")
@@ -30,6 +30,6 @@ public class Learnhub {
     @Column(name = "follow", columnDefinition = "int comment '关注量'")
     private int follow = 0;
 
-    @Column(name = "permissions", columnDefinition = "int comment '访问权限'")
+    @Column(name = "permissions", columnDefinition = "tinyint comment '访问权限'")
     private int permissions = 0;
 }

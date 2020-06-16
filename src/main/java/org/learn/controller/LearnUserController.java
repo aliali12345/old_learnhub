@@ -33,7 +33,7 @@ public class LearnUserController {
         List<LearnUser> learnuser = learnUserService.findLearnUser();
         System.out.println(learnuser);
         request.setAttribute("learnuser", learnuser);
-        return "find learnuser";
+        return "learnhub/members";
     }
 
     @RequestMapping(value = "/join",method = RequestMethod.POST)

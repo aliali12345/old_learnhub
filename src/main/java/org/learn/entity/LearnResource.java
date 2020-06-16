@@ -13,11 +13,11 @@ public class LearnResource {
     @Id
     private Long id;
 
-    @Column(name = "resource_name", columnDefinition = "int comment '资源名称'")
-    private String resource_name;
+    @Column(name = "resource_name", columnDefinition = "varchar(100) comment '资源名称'")
+    private String resourceName;
 
     @Column(name = "user_name", columnDefinition = "char(50) comment '作者'")
-    private String user_name;
+    private String userName;
 
     @Column(name = "introduction", columnDefinition = "varchar(255) comment '描述'")
     private String introduction;
@@ -26,14 +26,14 @@ public class LearnResource {
     private String content;
 
     @Column(name = "file_url", columnDefinition = "text comment '资源文件路径'")
-    private String file_url;
+    private String fileUrl;
 
     @Column(name = "tags", columnDefinition = "char(50) comment '标签'")
     private String tags;
 
-    @Column(name = "type", columnDefinition = "int comment '资源类型'")
-    private int type;
+    @Column(name = "type", columnDefinition = "tinyint comment '资源类型'")
+    private Integer type;
 
     @Column(name = "update_time", columnDefinition = "datetime comment '更新时间'")
-    private String update_time;
+    private String updateTime;
 }

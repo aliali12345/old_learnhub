@@ -3,10 +3,10 @@ package org.learn.service.impl;
 import org.learn.entity.User;
 import org.learn.repo.UserRepo;
 import org.learn.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -23,6 +23,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public Optional<User> findUser(String username, String password) {
        return userRepo.findByUsernameAndPassword(username, password);
+    }
+
+    @Override
+    public List<User> findUsersByIds(List<Long> userIds) {
+        return userRepo.findAllById(userIds);
     }
 
     @Override
