@@ -2,6 +2,9 @@ package org.learn.vo;
 
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 学习空间成员展示
  */
@@ -18,27 +21,36 @@ public class LearnUserVO {
     private Long learnId;
 
     /**
-     * 用户id
-     */
-    private String userId;
-
-    /**
-     * 加入时间
-     */
-    private String joinTime;
-
-    /**
-     * 昵称
-     */
-    private String username;
-
-    /**
-     * 头像
-     */
-    private String avatar;
-
-    /**
      * 成员数量
      */
     private int memberCount;
+
+    /**
+     * 成员信息
+     */
+    private List<UserInfo> userInfos = new ArrayList<>();
+
+    @Data
+    public static class UserInfo{
+
+        /**
+         * 用户id
+         */
+        private Long userId;
+
+        /**
+         * 昵称
+         */
+        private String username;
+
+        /**
+         * 头像
+         */
+        private String avatar;
+
+        /**
+         * 加入时间
+         */
+        private String joinTime;
+    }
 }

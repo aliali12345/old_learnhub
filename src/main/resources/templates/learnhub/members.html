@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
 
@@ -93,10 +93,10 @@
 		<div class="col-lg-8">
 			<ul class="breadcrumb">
 				<li>
-					<a href="#">学习空间</a>
+					<a href="#" >学习空间</a>
 				</li>
 				<li>
-					<a href="#">软件工程(国防科技大学)</a>
+					<a href="#" th:text="${learnuser.name}">软件工程(国防科技大学)</a>
 				</li>
 				<li>
 					<a href="#">成员</a>
@@ -112,19 +112,9 @@
 				</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td><img src="../../img/1.jpg" class="img-circle">&nbsp;<a>Doe</a></td>
-						<td>2020-6-16</td>
-						<td>成员</td>
-					</tr>
-					<tr>
-						<td><img src="../../img/1.jpg" class="img-circle">&nbsp;<a>Doe</a></td>
-						<td>2020-6-16</td>
-						<td>成员</td>
-					</tr>
-					<tr>
-						<td><img src="../../img/1.jpg" class="img-circle">&nbsp;<a>Doe</a></td>
-						<td>2020-6-16</td>
+					<tr th:each="user,userStat : ${learnuser.userInfos}">
+						<td><img th:src="${user.avatar}" class="img-circle">&nbsp;<a th:text="${user.username}">Doe</a></td>
+						<td th:src="${user.joinTime}">2020-6-16</td>
 						<td>成员</td>
 					</tr>
 				</tbody>

@@ -19,7 +19,7 @@ public class LearnUser {
 
     @NonNull
     @Column(name = "user_id", columnDefinition = "bigint comment '用户id'")
-    private String userId;
+    private Long userId;
 
     @Column(name = "join_time", columnDefinition = "datetime comment '加入时间'")
     private String joinTime;
