@@ -3,6 +3,7 @@ package org.learn.service.impl;
 import org.learn.entity.User;
 import org.learn.repo.UserRepo;
 import org.learn.service.UserService;
+import org.learn.vo.UserAddVO;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -16,7 +17,10 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public Optional<User> addUser(User user) {
+    public Optional<User> addUser(UserAddVO userAddVO) {
+        User user = new User();
+        user.setUsername(userAddVO.getUsername());
+        user.setPassword(userAddVO.getPassword());
         return Optional.of(userRepo.saveAndFlush(user));
     }
 

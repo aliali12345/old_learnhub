@@ -6,6 +6,9 @@ import org.learn.pojo.Result;
 import org.learn.service.UserService;
 import org.learn.entity.User;
 import org.learn.utils.FileUtil;
+import org.learn.vo.UserAddVO;
+import org.learn.vo.UserVO;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +28,8 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(value = "/register",method = RequestMethod.POST)
-    public Result register(@RequestBody User user, HttpServletResponse response) throws IOException {
+    @ResponseBody
+    public Result register(@RequestBody UserAddVO user, HttpServletResponse response) throws IOException {
         Optional<User> optional = userService.addUser(user);
         if (optional.isPresent()){
             response.sendRedirect("/login");
@@ -36,10 +40,13 @@ public class UserController {
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     @ResponseBody
     public Result login(@RequestParam(value = "username") String username, @RequestParam(value = "password") String password, HttpServletRequest request, HttpServletResponse response) throws IOException {
-        Optional<User> user = userService.findUser(username, password);
-        if (user.isPresent()){
+        Optional<User> optional = userService.findUser(username, password);
+        if (optional.isPresent()){
             HttpSession httpSession = request.getSession();
-            httpSession.setAttribute(ConstEnum.USER_INFO.getValue(), user.get());
+            User user = optional.get();
+            UserVO userVO = new UserVO();
+            BeanUtils.copyProperties(user,userVO);
+            httpSession.setAttribute(ConstEnum.USER_INFO.getValue(), userVO);
             response.sendRedirect("/learnhub");
         }
         return new Result(MessageEnum.LOGIN_FAIL);

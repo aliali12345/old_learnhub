@@ -1,6 +1,5 @@
 package org.learn.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import javax.persistence.*;
 
@@ -16,7 +15,6 @@ public class User {
     private String username;
 
     @Column(name = "password", columnDefinition = "varchar(50) comment '密码'")
-    @JsonIgnore
     private String password;
 
     @Column(name = "avatar", columnDefinition = "varchar(50) comment '头像'")
@@ -36,18 +34,4 @@ public class User {
 
     @Column(name = "introduction",columnDefinition = "varchar(255) comment '简介'")
     private String introduction;
-
-    @Override
-    public String toString() {
-        return "{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", avatar='" + avatar + '\'' +
-                ", email='" + email + '\'' +
-                ", identity=" + identity +
-                ", organization='" + organization + '\'' +
-                ", site='" + site + '\'' +
-                ", introduction='" + introduction + '\'' +
-                '}';
-    }
 }
