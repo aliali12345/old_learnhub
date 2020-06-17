@@ -132,8 +132,11 @@
                         username: $("#username").val(),
                         password: $("#password").val()
                     }),
-                    dataType: "JSON",
-                    success: function(result) {}
+                    dataType: "text",
+                    success: function(result) {
+                        alert("注册成功，跳转到登录页面")
+                        window.location.href="/login";
+                    }
                 });
 
         //
