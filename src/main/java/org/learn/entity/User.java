@@ -11,7 +11,7 @@ public class User {
     @Id
     private Long id;
 
-    @Column(name = "user_name", columnDefinition = "varchar(50) comment '昵称'")
+    @Column(name = "user_name", columnDefinition = "varchar(50) comment '昵称'",unique = true)
     private String username;
 
     @Column(name = "password", columnDefinition = "varchar(50) comment '密码'")
