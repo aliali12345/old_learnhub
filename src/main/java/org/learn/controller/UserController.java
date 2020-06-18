@@ -10,6 +10,7 @@ import org.learn.vo.UserAddVO;
 import org.learn.vo.UserVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -22,10 +23,11 @@ import java.io.IOException;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("user")
 public class UserController {
     @Autowired
     private UserService userService;
+    @Value(value = "${UploadPath}") String uploadPath;
 
     @RequestMapping(value = "/register",method = RequestMethod.POST)
     @ResponseBody
@@ -57,10 +59,9 @@ public class UserController {
     public Result photo( HttpServletRequest request){
         MultipartHttpServletRequest multipart = (MultipartHttpServletRequest) request;
         MultipartFile file = multipart.getFile("file");
-        User user = (User)request.getSession().getAttribute(ConstEnum.USER_INFO.getValue());
-        String filePath = FileUtil.uploadFile(file, user.getEmail());
-        user.setAvatar(filePath);
-        userService.updateUser(user);
+        UserVO userVO = (UserVO)request.getSession().getAttribute(ConstEnum.USER_INFO.getValue());
+        String filePath = FileUtil.uploadFile(file, uploadPath,userVO.getEmail());
+        userService.updAvatar(userVO.getId(), filePath);
         return new Result(MessageEnum.SUCCESS,filePath);
     }
 

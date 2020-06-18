@@ -14,7 +14,7 @@ import java.util.UUID;
 
 public class FileUtil {
 
-    private static String getUploadRootPath(){
+    public static String getUploadRootPath(){
         URL classes = FileUtil.class.getResource("/");
         return classes.getPath();
     }
@@ -25,10 +25,10 @@ public class FileUtil {
      * @param path
      * @return
      */
-    public static String uploadFile(MultipartFile file, String path){
+    public static String uploadFile(MultipartFile file, String rootPath, String path){
         String relPath = null;
         if (file != null && !file.isEmpty()){
-            String dir = getUploadRootPath() + ConstEnum.UPLOAD_ROOT_PATH.getValue() + File.separator;
+            String dir = rootPath + File.separator + ConstEnum.UPLOAD_ROOT_PATH.getValue() + File.separator;
             File dirFile = new File(dir);
             if (!dirFile.exists()){
                 boolean flag = dirFile.mkdir();
@@ -48,7 +48,7 @@ public class FileUtil {
             File newFile = new File(fullPath);
             try {
                 if (newFile.createNewFile()) {
-                    file.getInputStream().transferTo(new FileOutputStream(newFile));
+                    file.transferTo(newFile);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -58,10 +58,10 @@ public class FileUtil {
         return relPath;
     }
 
-    public static void outPutFile(HttpServletResponse response, String filePath) throws IOException {
+    public static void outPutFile(HttpServletResponse response, String rootPath,String filePath) throws IOException {
         URL url = PageController.class.getResource(filePath);
         if (url != null) {
-            FileInputStream fileInputStream = new FileInputStream(getUploadRootPath()+filePath);
+            FileInputStream fileInputStream = new FileInputStream(rootPath + File.separator + filePath);
             byte[] b = new byte[fileInputStream.available()];
             int readSize = fileInputStream.read(b);
             if (readSize > 0) {

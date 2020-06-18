@@ -38,6 +38,8 @@ spring:
 
 # 需要登录才能进行操作的请求uri
 FilterURI: "/profile/|/upload"
+# 上传文件路径
+UploadPath: "D:/"
 
 
 

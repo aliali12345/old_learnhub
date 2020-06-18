@@ -11,4 +11,5 @@ public interface UserService {
     Optional<User> findUser(String username, String password);
     List<User> findUsersByIds(List<Long> userIds);
     void updateUser(User user);
+    void updAvatar(Long userId, String filePath);
 }

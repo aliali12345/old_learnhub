@@ -5,12 +5,14 @@ import org.learn.repo.UserRepo;
 import org.learn.service.UserService;
 import org.learn.vo.UserAddVO;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
     @Resource
     private UserRepo userRepo;
@@ -39,5 +41,8 @@ public class UserServiceImpl implements UserService {
         userRepo.saveAndFlush(user);
     }
 
-
+    @Override
+    public void updAvatar(Long userId, String filePath) {
+        userRepo.updateAvatar(userId, filePath);
+    }
 }
