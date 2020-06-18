@@ -5,7 +5,8 @@ package org.learn.enums;
  */
 public enum ConstEnum {
     USER_INFO("userInfo"),
-    UPLOAD_ROOT_PATH("uploadFile")
+    UPLOAD_ROOT_PATH("uploadFile"),
+    LEARN_HUB_FILE_DIR("learnhubFile")
     ;
 
     ConstEnum(String value) {

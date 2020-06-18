@@ -34,8 +34,9 @@ public class SessionFilter implements Filter {
         Object attribute = httpSession.getAttribute(ConstEnum.USER_INFO.getValue());
         if (needLogin(request) && attribute == null){
             response.sendRedirect("/login");
+        }else {
+            filterChain.doFilter(servletRequest,servletResponse);
         }
-        filterChain.doFilter(servletRequest,servletResponse);
     }
 
     @Override

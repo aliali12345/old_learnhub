@@ -22,10 +22,10 @@ public class FileUtil {
     /**
      * 上传文件返回相对路径
      * @param file
-     * @param path
+     * @param dirName
      * @return
      */
-    public static String uploadFile(MultipartFile file, String rootPath, String path){
+    public static String uploadFile(MultipartFile file, String rootPath, String dirName){
         String relPath = null;
         if (file != null && !file.isEmpty()){
             String dir = rootPath + File.separator + ConstEnum.UPLOAD_ROOT_PATH.getValue() + File.separator;
@@ -42,9 +42,9 @@ public class FileUtil {
             }
             int uuid = UUID.randomUUID().hashCode();
             String newName = uuid + "_" + originalFilename;
-            path = path == null ? "" : path;
-            relPath = path + newName;
-            String fullPath = dir + relPath;
+            dirName = dirName == null ? "" : dirName;
+            relPath = dirName + newName;
+            String fullPath = dir + File.separator + relPath;
             File newFile = new File(fullPath);
             try {
                 if (newFile.createNewFile()) {

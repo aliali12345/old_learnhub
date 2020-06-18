@@ -21,8 +21,8 @@ public class Learnhub {
     @Column(name = "introduction",columnDefinition = "varchar(255) comment '简介'")
     private String introduction;
 
-    @Column(name = "admin", columnDefinition = "tinyint comment '管理员'")
-    private int admin = 0;
+    @Column(name = "admin", columnDefinition = "bigint comment '管理员'")
+    private Long admin;
 
     @Column(name = "star", columnDefinition = "int comment '点赞量'")
     private int star = 0;
