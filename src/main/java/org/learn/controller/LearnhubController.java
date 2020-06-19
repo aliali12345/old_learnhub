@@ -1,7 +1,14 @@
 package org.learn.controller;
 
+import net.sf.ehcache.Cache;
+import net.sf.ehcache.CacheManager;
+import net.sf.ehcache.Ehcache;
+import net.sf.ehcache.Element;
+import org.hibernate.mapping.Array;
 import org.learn.entity.Learnhub;
 import org.learn.enums.ConstEnum;
+import org.learn.enums.MessageEnum;
+import org.learn.pojo.Result;
 import org.learn.service.LearnhubService;
 import org.learn.utils.FileUtil;
 import org.learn.utils.HttpRequestUtil;
@@ -16,7 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -40,6 +47,34 @@ public class LearnhubController {
         learnhub.setAdmin(requestUtil.getUser().getId());
         learnhubService.addLearnhub(learnhub);
         return "/learnhub";
+    }
+
+    @RequestMapping(value = "/like",method = RequestMethod.POST)
+    @ResponseBody
+    public Result like(Long learnId){
+        CacheManager cacheManager = CacheManager.getInstance();
+        Cache old = cacheManager.getCache(ConstEnum.SPACE_LIKE.getValue());
+        Long id = requestUtil.getUser().getId();
+        List<Long> likeUserId = null;
+        if (old == null){
+            Ehcache cache = new Cache(ConstEnum.SPACE_LIKE.getValue(), 5000, true, true,0,0);
+            likeUserId = new ArrayList<>(1);
+            likeUserId.add(id);
+            Element element = new Element(learnId,likeUserId);
+            cache.put(element);
+        }else {
+            Element element = old.get(learnId);
+            likeUserId = (List<Long>)element.getObjectValue();
+            if (likeUserId.contains(id)) {
+                likeUserId.remove(id);
+            }else{
+                likeUserId.add(id);
+            }
+            element = new Element(learnId,likeUserId);
+            old.put(element,true);
+        }
+
+        return new Result(MessageEnum.SUCCESS,likeUserId.size());
     }
 
     @RequestMapping(value = "/find", method = RequestMethod.POST)

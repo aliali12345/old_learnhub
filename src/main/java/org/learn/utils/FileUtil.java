@@ -42,9 +42,9 @@ public class FileUtil {
             }
             int uuid = UUID.randomUUID().hashCode();
             String newName = uuid + "_" + originalFilename;
-            dirName = dirName == null ? "" : dirName;
+            dirName = dirName == null ? "" : dirName + File.separator;
             relPath = dirName + newName;
-            String fullPath = dir + File.separator + relPath;
+            String fullPath = dir + relPath;
             File newFile = new File(fullPath);
             try {
                 if (newFile.createNewFile()) {
