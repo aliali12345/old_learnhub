@@ -9,4 +9,5 @@ public interface LearnUserService {
     List<LearnUser> findLearnUser();
     void add(LearnUser learnUser);
     LearnUserVO findUserInfo(Long learnId);
+    List<LearnUser> findAllByLearnId(long id);
 }

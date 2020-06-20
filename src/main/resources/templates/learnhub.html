@@ -109,11 +109,10 @@
                                 <div>
                                     <form id="add" action="/learnhub/add" enctype="multipart/form-data" method="post">
                                         <h2>空间封面</h2>
-                                        <img id="pic" style="width:100px;height:100px;border-radius:50%;" src="http://www.jq22.com/tx/28.png" />
-                                        <input id="upload" name="file" accept="image/*" type="file" style="display: none">
-                                        <p>仅支持 jpg, jpeg, png 格式的图片类型。
-                                            图片允许的最大大小为2MB。
-                                        </p>
+                                        <div class="form-group">
+                                            <label for="name">头像地址:</label>
+                                            <input type="text" class="form-control" id="avatar" name="avatar">
+                                        </div>
                                         <div class="form-group">
                                             <label for="name">空间名:</label>
                                             <input type="username" class="form-control" id="name" name="name">
@@ -135,27 +134,21 @@
                     </div>
                 </div>
                 <div class="tab-content" style="margin: 20px">
-                    <div class="tab-pane active" id="panel-336201">
-                            <span>
-                                <div class="col-md-1 column">
-                                    <img alt="Cinque Terre" style="width: 90px;"
-                                         src="https://file.learnerhub.net/default_product_avatar.jpg"/>
-                                </div>
-                                <div class="col-md-10 column">
-                                    <h5>
-                                        软件工程（国防科技大学） - 毛新军
-                                    </h5>
-                                    <p>
-                                        围绕软件工程课程综合实践，针对综合实践中的需求分析、软件设计、系统建模、编码测试、软件维护等方面的内容，讨论问题，分享成果，交流经验，共享资源
-                                        <a class="btn" href="./learnhub/index">进入空间 >></a>
-                                    </p>
-                                </div>
-                                <div class="col-md-1 column">
-                                    <i class="fa fa-thumbs-o-up"></i>19<br/>
-                                    <i class="fa fa-heart"></i>98<br/>
-                                    <i class="fa fa-group"></i>12<br/>
-                                </div>
+                    <div class="tab-pane active" id="panel-336201" th:each="learn: ${learnhub}">
+                        <li class="list-group-item">
+                            <img th:src="${learn.avatar}" style="height: 48px;" class="img-circle">
+                            <a th:href="'learnhub/index?id=' + ${learn.id}" th:text="${learn.name}" style="font-size: 20px"></a>
+                            <span class="badge">
+                                    <i class="fa fa-group"></i>
                             </span>
+                            <span class="badge">
+                                    <i class="fa fa-heart"></i>
+                            </span>
+                            <span class="badge">
+                                    <i class="fa fa-thumbs-o-up"></i>
+                            </span>
+                            <p th:text="${learn.introduction}"></p>
+                        </li>
                     </div>
                     <div class="tab-pane" id="panel-336202">
                         <p>

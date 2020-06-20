@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface LearnUserRepo extends JpaRepository<LearnUser,Long> {
-    List<LearnUser> findAllByLearnId(Long id);
+    List<LearnUser> findAllByLearnId(long id);
 }

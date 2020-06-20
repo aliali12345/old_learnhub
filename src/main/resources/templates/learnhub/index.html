@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
 
@@ -61,7 +61,7 @@
                     <li class="divider">
                     </li>
                     <li>
-                        <a href="#">退出系统</a>
+                        <a href="/login">退出系统</a>
                     </li>
                 </ul>
             </li>
@@ -80,13 +80,13 @@
 
                 </li>
                 <li class="active">
-                    <a href="index">主页</a>
+                    <a th:href="'index?id=' + ${learnhub.id}">主页</a>
                 </li>
                 <li>
-                    <a href="resource">资源区</a>
+                    <a th:href="'resource?id=' + ${learnhub.id}">资源区</a>
                 </li>
                 <li>
-                    <a href="members">成员</a>
+                    <a th:href="'members?id=' + ${learnhub.id}">成员</a>
                 </li>
             </ul>
         </div>

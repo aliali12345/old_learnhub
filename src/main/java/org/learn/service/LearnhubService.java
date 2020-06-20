@@ -11,4 +11,5 @@ public interface LearnhubService {
     List<Learnhub> findLearnhub();
     void deleteLearnhub(long id);
     Optional<Learnhub> updateLearnhub(Learnhub learnhub);
+    List<Learnhub> findLearnhubById(List<Long> id);
 }

@@ -56,4 +56,10 @@ public class LearnUserServiceImpl implements LearnUserService {
 
         return learnUserVO;
     }
+
+    @Override
+    public List<LearnUser> findAllByLearnId(long id) {
+        System.out.println("LearnUserServiceImpl");
+        return learnUserRepo.findAllByLearnId(id);
+    }
 }

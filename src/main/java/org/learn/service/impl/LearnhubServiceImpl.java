@@ -6,6 +6,7 @@ import org.learn.service.LearnhubService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,6 +34,11 @@ public class LearnhubServiceImpl implements LearnhubService {
     @Override
     public Optional<Learnhub> updateLearnhub(Learnhub learnhub) {
         return Optional.of(learnhubRepo.saveAndFlush(learnhub));
+    }
+
+    @Override
+    public List<Learnhub> findLearnhubById(List<Long> id) {
+        return learnhubRepo.findAllById(id);
     }
 
 
