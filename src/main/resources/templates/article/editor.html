@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../ckeditor/ckeditor.js"></script>
+    <script src="../../ckeditor/adapters/jquery.js"></script>
+
+    <script>
+        $(function(){
+            $('#Content').ckeditor();//控件1
+            $('#Content1').ckeditor();//控件2
+        })
+    </script>
+
+</head>
+<body>
+    <textarea  id="Content" name="Content" style="width:1024px; height: 1000px"></textarea>
+</body>
+</html>

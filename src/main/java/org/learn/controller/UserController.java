@@ -1,12 +1,20 @@
 package org.learn.controller;
 
-import org.learn.enums.Message;
+import org.learn.enums.ConstEnum;
+import org.learn.enums.MessageEnum;
 import org.learn.pojo.Result;
 import org.learn.service.UserService;
 import org.learn.entity.User;
+import org.learn.utils.FileUtil;
+import org.learn.vo.UserAddVO;
+import org.learn.vo.UserVO;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,30 +23,47 @@ import java.io.IOException;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("user")
 public class UserController {
     @Autowired
     private UserService userService;
+    @Value(value = "${UploadPath}") String uploadPath;
 
-    @RequestMapping("/register")
-    public Result register(@RequestBody User user, HttpServletResponse response) throws IOException {
+    @RequestMapping(value = "/register",method = RequestMethod.POST)
+    @ResponseBody
+    public Result register(@RequestBody UserAddVO user, HttpServletResponse response) throws IOException {
         Optional<User> optional = userService.addUser(user);
         if (optional.isPresent()){
             response.sendRedirect("/login");
         }
-        return new Result(Message.LOGIN_FAIL);
+        return new Result(MessageEnum.LOGIN_FAIL);
     }
 
-    @RequestMapping("login")
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
     @ResponseBody
     public Result login(@RequestParam(value = "username") String username, @RequestParam(value = "password") String password, HttpServletRequest request, HttpServletResponse response) throws IOException {
-        Optional<User> user = userService.findUser(username, password);
-        if (user.isPresent()){
+        Optional<User> optional = userService.findUser(username, password);
+        if (optional.isPresent()){
             HttpSession httpSession = request.getSession();
-            httpSession.setAttribute("userInfo", user.get());
-            httpSession.setMaxInactiveInterval(60);
+            User user = optional.get();
+            UserVO userVO = new UserVO();
+            BeanUtils.copyProperties(user,userVO);
+            httpSession.setAttribute(ConstEnum.USER_INFO.getValue(), userVO);
             response.sendRedirect("/learnhub");
         }
-        return new Result(Message.LOGIN_FAIL);
+        return new Result(MessageEnum.LOGIN_FAIL);
     }
+
+    @RequestMapping(value = "/upload",method = RequestMethod.POST)
+    @ResponseBody
+    public Result photo( HttpServletRequest request){
+        MultipartHttpServletRequest multipart = (MultipartHttpServletRequest) request;
+        MultipartFile file = multipart.getFile("file");
+        UserVO userVO = (UserVO)request.getSession().getAttribute(ConstEnum.USER_INFO.getValue());
+        String filePath = FileUtil.uploadFile(file, uploadPath,userVO.getEmail());
+        userService.updAvatar(userVO.getId(), filePath);
+        return new Result(MessageEnum.SUCCESS,filePath);
+    }
+
+
 }

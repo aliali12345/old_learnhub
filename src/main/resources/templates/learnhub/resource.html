@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
 
@@ -44,10 +44,10 @@
         </form>
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <a href="#">登录/注册</a>
+                <a href="/login">登录/注册</a>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">用户名<strong class="caret"></strong></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" th:inline="text" th:if="${session.userInfo} ne null">[[${session.userInfo.username}]]<strong class="caret"></strong></a>
                 <ul class="dropdown-menu">
                     <li>
                         <a href="#">我的动态</a>
@@ -80,19 +80,13 @@
 
                 </li>
                 <li class="active">
-                    <a href="index">主页</a>
+                    <a th:href="'index?id=' + ${id}">主页</a>
                 </li>
                 <li>
-                    <a href="resource">资源区</a>
+                    <a th:href="'resource?id=' + ${id}">资源区</a>
                 </li>
                 <li>
-                    <a href="issues">讨论区</a>
-                </li>
-                <li>
-                    <a href="contributions">贡献区</a>
-                </li>
-                <li>
-                    <a href="members">成员</a>
+                    <a th:href="'members?id=' + ${id}">成员</a>
                 </li>
             </ul>
         </div>
@@ -109,10 +103,7 @@
                 </li>
             </ul>
             <h2>资源区</h2>
-            <div style="margin: 10px" class="btn btn-default">发布资源</div>
-            <div style="margin: 10px" class="btn btn-default">新建目录</div>
-            <div style="margin: 10px" class="btn btn-default">附件列表</div>
-            <div style="margin: 10px" class="btn btn-default">查找资源</div>
+            <a style="margin: 10px" class="btn btn-default" th:href="'/article/editor?id=' + ${id}">发布资源</a>
             <table class="table table-striped">
                 <caption>资源区</caption>
                 <thead>

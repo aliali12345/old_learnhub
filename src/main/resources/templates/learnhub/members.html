@@ -1,185 +1,149 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+	<meta charset="UTF-8">
 
-    <title>知识会 - 为开源共享而生</title>
+	<title>知识会 - 为开源共享而生</title>
 
-    <link rel="stylesheet" href="../../css/bootstrap.min.css">
-    <script src="../../js/jquery.min.js"></script>
-    <script src="../../js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../../font-awesome/css/font-awesome.css">
+	<link rel="stylesheet" href="../../css/bootstrap.min.css">
+	<script src="../../js/jquery.min.js"></script>
+	<script src="../../js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="../../font-awesome/css/font-awesome.css">
+
 
 </head>
 <body>
 <nav class="navbar navbar-default" role="navigation">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">Leanhub</a>
-    </div>
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="#">Leanhub</a>
+	</div>
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-            <li class="active">
-                <a href="/forum">社区</a>
-            </li>
-            <li>
-                <a href="/learnhub">学习空间</a>
-            </li>
-            <li>
-                <a href="/group">我的群组</a>
-            </li>
-        </ul>
-        <form class="navbar-form navbar-left" role="search">
-            <div class="form-group">
-                <input type="text" class="form-control" />
-            </div> <button type="submit" class="btn btn-default">搜索</button>
-        </form>
-        <ul class="nav navbar-nav navbar-right">
-            <li>
-                <a href="#">登录/注册</a>
-            </li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">用户名<strong class="caret"></strong></a>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a href="#">我的动态</a>
-                    </li>
-                    <li>
-                        <a href="#">个人中心</a>
-                    </li>
-                    <li>
-                        <a href="#">问卷系统</a>
-                    </li>
-                    <li class="divider">
-                    </li>
-                    <li>
-                        <a href="#">退出系统</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </div>
+	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		<ul class="nav navbar-nav">
+			<li class="active">
+				<a href="/forum">社区</a>
+			</li>
+			<li>
+				<a href="/learnhub">学习空间</a>
+			</li>
+			<li>
+				<a href="/group">我的群组</a>
+			</li>
+		</ul>
+		<form class="navbar-form navbar-left" role="search">
+			<div class="form-group">
+				<input type="text" class="form-control"/>
+			</div>
+			<button type="submit" class="btn btn-default">搜索</button>
+		</form>
+		<ul class="nav navbar-nav navbar-right">
+			<li>
+				<a href="/login">登录/注册</a>
+			</li>
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" th:inline="text" th:if="${session.userInfo} ne null">[[${session.userInfo.username}]]<strong class="caret"></strong></a>
+				<ul class="dropdown-menu">
+					<li>
+						<a href="#">我的动态</a>
+					</li>
+					<li>
+						<a href="#">个人中心</a>
+					</li>
+					<li>
+						<a href="#">问卷系统</a>
+					</li>
+					<li class="divider">
+					</li>
+					<li>
+						<a href="#">退出系统</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
 </nav>
-   <div>
-    <div class="row">
-        <div class="col-lg-2">
-       	<ul class="nav nav-list">
+<div>
+	<div class="row">
+		<div class="col-lg-2">
+			<ul class="nav nav-list">
 				<li class="nav-header">
 					<div style="margin-left:20px">
 						<img style="width: 42px" src="http://file.learnerhub.net/Fq3lWeqyWarwbGrihRlIoVsu9d-W">
 						<h4>软件工程(国防科技大学)</h4>
 					</div>
-					
+
 				</li>
 				<li class="active">
-					<a href="index">主页</a>
+					<a th:href="'index?id=' + ${id}">主页</a>
 				</li>
 				<li>
-					<a href="resource">资源区</a>
+					<a th:href="'resource?id=' + ${id}">资源区</a>
 				</li>
 				<li>
-					<a href="issues">讨论区</a>
-				</li>
-				<li>
-					<a href="contributions">贡献区</a>
-				</li>
-				<li>
-					<a href="members">成员</a>
+					<a th:href="'members?id=' + ${id}">成员</a>
 				</li>
 			</ul>
-        </div>
-        <div class="col-lg-8">
-            <ul class="breadcrumb">
+		</div>
+		<div class="col-lg-8">
+			<ul class="breadcrumb">
 				<li>
-					<a href="#">主页</a> <span class="divider">/</span>
+					<a href="#" >学习空间</a>
 				</li>
 				<li>
-					<a href="#">类目</a> <span class="divider">/</span>
+					<a href="#" >软件工程(国防科技大学)</a>
 				</li>
-				<li class="active">
-					主题
+				<li>
+					<a href="#">成员</a>
 				</li>
 			</ul>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">
-						管理员团队
-					</h3>
-				</div>
-				<div class="panel-body">
-					<div style="margin-left:10px">
-						<img style="width: 42px" src="http://file.learnerhub.net/Fq3lWeqyWarwbGrihRlIoVsu9d-W">
-						<p>毛新军</p>
-					</div>
-				</div>
-			</div>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">
-						加入的社区
-					</h3>
-				</div>
-				<div class="panel-body">
-					<div  style="margin-left:10px" >
-						<img style="width: 72px" src="https://file.learnerhub.net/default_product_avatar.jpg">
-						<p>软件工程</p><p>社区人数: 283</p>
-					</div>
-				</div>
-			</div>
-		    <div class="row">
-		        <div class="col-lg-6">
-		            <div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title">
-								最新资源
-							</h3>
-						</div>
-						<div class="panel-body">
-							<div style="margin-left:10px">
-								<p>gazebo使用模型来仿真环境</p>
-								<p>gazebo使用模型来仿真环境</p>
-								<p>gazebo使用模型来仿真环境</p>
-								<p>gazebo使用模型来仿真环境</p>
-								<p>gazebo使用模型来仿真环境</p>
-								<p>gazebo使用模型来仿真环境</p>
-								<p>gazebo使用模型来仿真环境</p>
-								<p>gazebo使用模型来仿真环境</p>
-								<p>gazebo使用模型来仿真环境</p>
-								<p>gazebo使用模型来仿真环境</p>
-							</div>
-						</div>
-					</div>
-		        </div>
-		        <div class="col-lg-6">
-		           <div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title">
-								活跃话题
-							</h3>
-						</div>
-						<div class="panel-body">
-							<div style="margin-left:10px">
-								<p>gazebo使用模型来仿真环境</p>
-								<p>gazebo使用模型来仿真环境</p>
-								<p>gazebo使用模型来仿真环境</p>
-								<p>gazebo使用模型来仿真环境</p>
-								<p>gazebo使用模型来仿真环境</p>
-								<p>gazebo使用模型来仿真环境</p>
-								<p>gazebo使用模型来仿真环境</p>
-								<p>gazebo使用模型来仿真环境</p>
-								<p>gazebo使用模型来仿真环境</p>
-								<p>gazebo使用模型来仿真环境</p>
-							</div>
-						</div>
-					</div>
-		        </div>
-		    </div>
+			<h2>成员</h2>
+			<table class="table table-hover">
+				<thead>
+				<tr>
+					<th>成员</th>
+					<th>加入时间</th>
+					<th>身份</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>阿狸</td>
+					<td>2020年5月20号</td>
+					<td>学生</td>
+				</tr>
+				<tr>
+					<td>阿狸</td>
+					<td>2020年5月20号</td>
+					<td>学生</td>
+				</tr>
+				<tr>
+					<td>阿狸</td>
+					<td>2020年5月20号</td>
+					<td>学生</td>
+				</tr>
+				<tr>
+					<td>阿狸</td>
+					<td>2020年5月20号</td>
+					<td>学生</td>
+				</tr>
+				<tr>
+					<td>阿狸</td>
+					<td>2020年5月20号</td>
+					<td>学生</td>
+				</tr>
+				<tr>
+					<td>阿狸</td>
+					<td>2020年5月20号</td>
+					<td>学生</td>
+				</tr>
+				</tbody>
+			</table>
 		</div>
 	</div>
 </div>

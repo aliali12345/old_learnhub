@@ -24,7 +24,8 @@
           <root url="file://$MODULE_DIR$/org/learn/src" />
           <root url="file://$MODULE_DIR$/org/learn/src/main/resources" />
           <root url="file://$MODULE_DIR$/org/learn/src/resources" />
-          <root url="file://$MODULE_DIR$/src" />
+          <root url="file://$MODULE_DIR$/src/main/java" />
+          <root url="file://$MODULE_DIR$/src/main/resources" />
           <root url="file://$MODULE_DIR$/src/resources" />
         </sourceRoots>
       </configuration>
@@ -41,9 +42,10 @@
       <sourceFolder url="file://$MODULE_DIR$/org/learn/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/org/learn/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/org/learn/src/resources" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
@@ -112,7 +114,7 @@
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-websocket:2.3.0.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-messaging:5.2.6.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-websocket:5.2.6.RELEASE" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: mysql:mysql-connector-java:8.0.20" level="project" />
+    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:8.0.20" level="project" />
     <orderEntry type="library" name="Maven: com.zaxxer:HikariCP:3.4.5" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.30" level="project" />
     <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.12" level="project" />
@@ -145,5 +147,7 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-jcl:5.2.6.RELEASE" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-test:5.2.6.RELEASE" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.xmlunit:xmlunit-core:2.7.0" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-cache:2.3.0.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-context-support:5.2.6.RELEASE" level="project" />
   </component>
 </module>

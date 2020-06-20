@@ -3,20 +3,26 @@ package org.learn.service.impl;
 import org.learn.entity.User;
 import org.learn.repo.UserRepo;
 import org.learn.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.learn.vo.UserAddVO;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
     @Resource
     private UserRepo userRepo;
 
 
     @Override
-    public Optional<User> addUser(User user) {
+    public Optional<User> addUser(UserAddVO userAddVO) {
+        User user = new User();
+        user.setUsername(userAddVO.getUsername());
+        user.setPassword(userAddVO.getPassword());
         return Optional.of(userRepo.saveAndFlush(user));
     }
 
@@ -25,5 +31,18 @@ public class UserServiceImpl implements UserService {
        return userRepo.findByUsernameAndPassword(username, password);
     }
 
+    @Override
+    public List<User> findUsersByIds(List<Long> userIds) {
+        return userRepo.findAllById(userIds);
+    }
 
+    @Override
+    public void updateUser(User user) {
+        userRepo.saveAndFlush(user);
+    }
+
+    @Override
+    public void updAvatar(Long userId, String filePath) {
+        userRepo.updateAvatar(userId, filePath);
+    }
 }

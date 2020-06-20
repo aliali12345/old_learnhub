@@ -5,11 +5,14 @@ spring:
     static-locations: classpath:/resources/, classpath:/static/
   thymeleaf:
     cache: false
-
+  main:
+    allow-bean-definition-overriding: true
+  session:
+    timeout: 10
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://47.114.62.11:3306/learnhub
+    url: jdbc:mysql://47.114.62.11:3306/learnhub?useUnicode=true&characterEncoding=UTF-8
     username: root
     password: www.Aliyun.com
     hikari:
@@ -24,6 +27,19 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+    properties:
+      hibernate:
+        dialect: org.learn.config.MysqlDBSetting
+
+  #允许上传的最大文件大小
+  servlet:
+    multipart:
+      max-file-size: 2MB
+
+# 需要登录才能进行操作的请求uri
+FilterURI: "/profile/|/upload|/learnhub/add"
+# 上传文件路径
+UploadPath: "~/workspace_private/img"
 
 
 
